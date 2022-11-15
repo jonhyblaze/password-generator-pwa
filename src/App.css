@@ -1,38 +1,713 @@
-.App {
+
+/* Global Styles */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Typography */
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Source Code Pro', monospace;
+  background-color: #F6F6F6;
+}
+
+h2 {
+  font-weight: 700;
+  font-size: 3.2rem;
+  line-height: 3.75rem;
+  text-align: left;
+  color: #282828;
+}
+
+h3 {
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 1.9rem;
+}
+
+h4 {
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1.9rem;
   text-align: center;
+  color: #FFFFFF;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+p {
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.25rem;
+  color: #282828;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+label {
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.25rem;
+  color: #282828;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+input {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #282828;
+ }
+
+.charset--label{
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.25rem;
+  color: #282828;
+}
+
+/* Components */
+
+.App {
   display: flex;
   flex-direction: column;
+  height: 100vh;
+}
+
+.app-wrapper {
+  margin: 0 auto;
+  padding-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  height: 100%;
+}
+
+.output {
+  display: flex;
+  flex-direction: row;
   align-items: center;
+  justify-content: flex-start;
+  gap: 3rem;
+  height: 3.5rem;
+}
+
+.output--field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .75rem 0 .75rem 1.5rem;
+  background: #FFFFFF;
+  border: 1px solid #282828;
+  /* box-shadow: 6px 6px 0px #000000; */
+  width: 66%;
+  height: 100%; 
+}
+
+.output--field:hover {
+  box-shadow: 4px 4px 0px #000000;
+  transition: .1s ease-in;
+}
+
+
+.output--copy {
+  background-image: url('../src/assets/copy.png');
+  background-size: cover;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #282828;
+  margin-right: 1.5rem;
+  cursor: pointer;
+}
+
+.output--copy:hover {
+  width: 1.7rem;
+  height: 1.7rem;
+  transition: .1s;
+}
+
+.output--copy:active {
+  width: 1.4rem;
+  height: 1.4rem;
+  transition: .1s;
+  color: #94a3b8;
+}
+
+
+.output--button {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  padding: 16px 24px;
+  gap: 8px;
+  width: 26%;
+  height: 100%;
+  background: #383838;
+  border: 1px solid #383838;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+.output--button:hover {
+  background: #383838;
+  box-shadow: 4px 4px 0px #000;
+  transition: .1s ease-in-out;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.output--button:active {
+  background: #000000;
+  box-shadow: none;
+}
+
+.complexity {
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+  width: 100%
+}
+
+.input {
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  height: 2rem;
+  width: 100%;
+}
+
+.input--label{
+  display: flex;
+  width: 40%;
+  gap: 1rem;
+  align-items: center;
+}
+
+.input--number {
+  width: 7%;
+  height: 100%;
+  padding-left: .75rem;
+  width: 52px;
+  height: 33px;
+}
+
+.input--slider {
+  width: 59%
+}
+
+.charset {
+  display: flex;
+  gap: 9rem;
+  margin-top: 1rem;
+}
+
+.charset--checkbox-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 3.5rem;
+}
+
+.charset--label {
+  gap:.15rem;
+  display: flex;
+  align-items: center;
+  gap: .35rem;
+}
+
+.checkbox {
+  background-color: #000000;
+}
+
+input[type=checkbox] {
+  width: 1.585rem;
+  height: 1.585rem;
+}
+
+/* * Adaptive */
+
+@media screen and (max-width: 770px) {
+  h2 {
+    font-size: 2.75rem;
+    align-self: center;
   }
-  to {
-    transform: rotate(360deg);
+
+  h3 {
+    font-size: 1.4rem;
   }
+
+  h4 {
+    font-size: 1.4rem;
+  }
+
+  .app-wrapper {
+    padding-left: 1.25rem;
+    gap: 2rem;
+    margin-top: 5rem;
+    align-items: center;
+   }
+
+   .output {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+    width: 100%;
+   }
+
+   .output--field {
+    min-height: 3rem;
+    width: 420px;
+    padding-left: 1rem;
+   }
+
+   .output--button {
+    min-height: 3rem;
+    width: 420px;
+    padding-left: 1rem;
+   }
+
+   .complexity {
+    margin-top: 5rem;
+    width: 420px;
+    gap: 1.25rem;
+    align-items: flex-start;
+  }
+
+  .complexity--time {
+    height: 50px;
+  } 
+
+  .input {
+    flex-direction: column;
+    margin-top: 1rem;
+    align-items: flex-start;
+    margin-top: 2.5rem;
+    gap: 1.5rem;
+    width: 420px;
+  }
+
+  .input--label {
+    height: 2rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  input[type=range] {
+    -webkit-appearance: none;
+    margin: 10px 0;
+    width: 95%;
+  }
+  
+.input--number {
+  width: 48px;
+  height: 30px;
+  border: 1px solid black;
+  font-size: 1rem;
+}
+
+.charset {
+  flex-direction: column;
+  justify-items: flex-start;
+  align-items: flex-start;
+  margin-top: 4rem;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+.charset--checkbox-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+  gap: 1.5rem;
+  width: 420px;
+}
+
+.charset--label{
+  display: flex;
+  align-items: center;
+  gap: .3rem;
+}
+
+.checkbox {
+  margin-left: 0;
+}
+
+input[type=checkbox] {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+}
+
+
+@media screen and (max-width: 500px) {
+  .app-wrapper, .App, body, #root {
+    overflow-x: hidden;
+  }
+
+  /* * Typography */
+
+  h2{
+    font-size: 2rem;
+    line-height: 2.75rem;
+    align-self: flex-start;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+  }
+  
+  h4 {
+    font-size: 1.35rem;
+    line-height: 1.45rem;
+  }
+  
+  p {
+    font-size: 1rem;
+    line-height: 1.2rem;
+  }
+  
+  label {
+    font-size: 1rem;
+    line-height: 1.2rem;
+  }
+  
+  input {
+    font-size: 1rem;
+    line-height: 1.2rem;
+   }
+
+   .charset--label {
+    font-size: 1.1rem;
+    line-height: 1.2rem;
+   }
+
+    /* * Components */
+    
+/* ? App wrappers section */
+
+   .app-wrapper {
+    padding-left: 0rem;
+    gap: .75rem;
+    margin: 0;
+    padding-top: 3rem;
+    padding-bottom: 5rem;
+   }
+
+   .title {
+    width: 390px;
+    justify-self: center;
+    text-align: center;
+   }
+
+/* ? Output section */
+
+  .output {
+    margin-top: 1.875rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: .875rem;
+    width: 100%;
+  }
+
+  .output--field {
+    min-height: 3rem;
+    width: 90%;
+    padding-left: .85rem;
+  }
+
+  .output--field:hover {
+    box-shadow: none;
+    transition: none;
+  }
+
+  .output--password {
+    font-size: 1.25rem;
+  }
+  
+  .output--copy {
+    width: 1.3rem;
+    height: 1.3rem;
+    margin-right: 0.95rem;
+  }
+  
+  .output--copy:hover {
+    width: 1.3rem;
+    height: 1.3rem;
+    transition: none;
+  }
+  .output--copy:active {
+    width: 1rem;
+    height: 1rem;
+    transition: none;
+  }
+
+  .output--button {
+    min-height: 3rem;
+    width: 90%;
+  }
+
+  .output--button:hover {
+    background: #383838;
+    box-shadow: none;
+    transition: none;
+  }
+
+  .output--button:active {
+    background: #000000;
+    box-shadow: none;
+  }
+
+  /* ? Complexity section */
+  
+.complexity {
+    margin-top: 5rem;
+    width: 100%;
+    gap: 1.25rem;
+    width: 100%;
+    align-items: center;
+  }
+  
+  .complexity--rating {
+    text-align: left;
+    align-self: flex-start;
+    padding-left: 2.5rem;
+  }
+  .complexity--time {
+    text-align: left;
+    align-self: flex-start;
+    padding-left: 2.5rem;
+    width: 360px;
+    height: 50px;
+  }
+
+/* ? Inputs section */
+
+  .input {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 1.5rem;
+    gap: 1.5rem;
+
+  }
+
+  .input--label {
+    display: flex;
+    justify-content: flex-start;
+    gap: 1rem;
+    width: 100%;
+    height: 2rem;
+    padding-left: 2.5rem;
+  }
+
+  input[type=range] {
+    -webkit-appearance: none;
+    margin: 10px 0;
+    width: 82%;
+  }
+  
+.input--number {
+  width: 48px;
+  height: 2rem;
+  border-radius: 0px;
+  border: 1px solid black;
+  font-size: 1rem;
+  align-self: flex-start;
+   
+}
+
+/* ? Characters set section */
+
+  .charset {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 5rem;
+    flex-wrap: wrap;
+    gap: .75rem;
+    padding-left: 2.5rem;
+  }
+  .charset--checkbox-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+    gap: 2.5rem;
+    width: 66%;
+  }
+
+  .charset--label{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    font-size: 1rem;
+    line-height: 1.2rem;
+  }
+
+  .checkbox {
+    margin-left: 0;
+  }
+  
+  input[type=checkbox] {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+}
+
+
+@media screen and (max-width: 385px) {
+  
+  h2.title {
+    font-size: 1.65rem;
+    text-align: left;
+    padding-left: 1.5rem;
+  }
+
+  h4 {
+    font-size: 1.35rem;
+  }
+
+  .output--password {
+    font-size: 1rem;
+  }
+
+  .complexity--time {
+    width: 330px;
+  }
+
+  }
+
+  @media screen and (max-width: 340px) {
+  
+    h2.title {
+      font-size: 1.65rem;
+      text-align: left;
+      padding-left: 1.5rem;
+    }
+  
+    h4 {
+      font-size: 1.3rem;
+    }
+  
+    .output--password {
+      font-size: .95rem;
+    }
+  
+    .complexity--time {
+      width: 310px;
+    }
+  
+  }
+
+/* Crazy CSS rules */
+
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+/* RANGE INPUT */
+
+input[type=range] {
+  -webkit-appearance: none;
+  margin: 10px 0;
+
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 3px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 0px 0px 0px #282828;
+  background: #282828;
+  border-radius: 50px;
+  border: 0px solid #282828;
+}
+input[type=range]::-webkit-slider-thumb {
+  box-shadow: 0px 0px 1px #000000;
+  border: 0px solid ;
+  height: 20px;
+  width: 20px;
+  padding: 10px;
+  border-radius: 50px;
+  background: #282828;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -8.5px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #282828;
+}
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 3px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 0px 0px 0px #282828;
+  background: #282828;
+  border-radius: 50px;
+  border: 0px solid #282828;
+}
+input[type=range]::-moz-range-thumb {
+  box-shadow: 0px 0px 1px #000000;
+  border: 0px solid ;
+  height: 20px;
+  width: 20px;
+  border-radius: 50px;
+  background: #282828;
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 3px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: rgba(40,40,40,0.2);
+  border: 0px solid #282828;
+  border-radius: 100px;
+  box-shadow: 0px 0px 0px #282828;
+}
+input[type=range]::-ms-fill-upper {
+  background: rgba(40,40,40,0.2);
+  border: 0px solid rgba(40,40,40,0.2);
+  border-radius: 100px;
+  box-shadow: 0px 0px 0px rgba(40,40,40,0.2);
+}
+input[type=range]::-ms-thumb {
+  box-shadow: 0px 0px 1px #000000;
+  border: 0px solid ;
+  height: 20px;
+  width: 20px;
+  border-radius: 50px;
+  background: #282828;
+  cursor: pointer;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: #282828;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #282828;
+}
+
+
+/* CHECKBOX INPUT */
+
+input[type=checkbox] {
+  background: #f1f5f9;
+  transition: background 250ms;
+  border: 1px solid #94a3b8;
+  accent-color: #282828
 }
